@@ -33,7 +33,25 @@ The data must be segmented into 60-second clips, and using all parameters, an es
 - _maintest.py_ = File containing functions to find the best hyperparameters
 - _tools.py_ = File continaing various functions
 - _mainsteps_hyperparamter_tuning.py_ = File containing various functions and workflows to find the best hyperparameters and save the best model.
-- _demo._
+- _demo.ipynb_ = Demo shown to lab tutours
+- _FixPython.m_ = Used to fix mat file created by python
+
+**_Function flow chart:_**
+
+_Record:_
+MATlAB's cellular data was transformed into a Python dictionary using the "h5storage" package.
+
+We designed a function to segment records into 60-second pieces, accounting for sample rates (ECG, SP02).
+
+Separated ECG, SP02, and QRS data into a structured dictionary. 
+
+_Noise Cancellation for ECG data_:
+IIR notch filter with 50 Hz resonant frequency to eliminate power supply noise. A median filter was also used to address baseline wandering.
+
+A 4th-order bandpass Butterworth filter (0.2,50Hz) was applied to remove noises outside the ECG frequency range. This was then incorporated with the Savitzky-Golay filter (6th order, 30-window width) to enhance Signal-to-Noise Ratio (SNR) while retaining signal shape.
+
+
+
 
 
 
